@@ -1,0 +1,57 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Asignar Nota - {{alumno}}</h4>
+    <button type="button" class="close close-button" aria-label="Close" (click)="cerrarModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <section class="modal-section">
+      <label class="modal-label">Cuatrimestre</label>
+      <div class="modal-button-group">
+        <button class="btn btn-light btn-cuatrimestre" 
+                [ngClass]="{ 'active': cuatrimestre === 'primerCuatrimestre' }"
+                (click)="cuatrimestre='primerCuatrimestre'">
+          1er Cuatrimestre
+        </button>
+        <button class="btn btn-light btn-cuatrimestre" 
+                [ngClass]="{ 'active': cuatrimestre === 'segundoCuatrimestre' }"
+                (click)="cuatrimestre='segundoCuatrimestre'" 
+                [disabled]="!primerCuatrimestreAsignado">
+          2do Cuatrimestre
+        </button>
+      </div>
+    </section>
+
+    
+    <section class="modal-section">
+      <label class="modal-label">Tipo de Nota</label>
+      <div class="modal-button-group">
+        <button class="btn btn-light" 
+                [ngClass]="{ 'active': tipo === 'TEA' }"
+                (click)="tipo='TEA'">TEA</button>
+        <button class="btn btn-light" 
+                [ngClass]="{ 'active': tipo === 'TEP' }"
+                (click)="tipo='TEP'">TEP</button>
+        <button class="btn btn-light" 
+                [ngClass]="{ 'active': tipo === 'TED' }"
+                (click)="tipo='TED'">TED</button>
+      </div>
+    </section>
+
+    
+    <section class="modal-section">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Observación</mat-label>
+        <textarea matInput [(ngModel)]="observacion" maxlength="200" class="observacion"></textarea>
+        <mat-hint align="end">{{observacion.length}} / 200</mat-hint>
+      </mat-form-field>
+    </section>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary btn-block" (click)="guardar()">Guardar</button>
+    <button class="btn btn-secondary btn-block" (click)="cerrarModal()">Cancelar</button>
+  </div>
+</div>

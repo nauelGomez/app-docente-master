@@ -1,0 +1,21 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let rite of dataSource; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ rite.denominacion }} - {{ rite.fecha }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Curso:</strong> {{ rite.curso }}</li>
+        <li class="list-group-item"><strong>Materia:</strong> {{ rite.materia }}</li>
+        <li class="list-group-item"><strong>Estado:</strong> {{ rite.estado }}</li>
+        <li class="list-group-item">
+          <strong>Progreso:</strong>
+          <mat-progress-bar mode="determinate" [value]="rite.progreso.replace('%', '')"></mat-progress-bar>
+        </li>
+      </ul>
+      <button mat-button (click)="verAlumnos()" class="btn btn-primary mt-2">Ver Alumnos</button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

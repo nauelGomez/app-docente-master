@@ -1,0 +1,56 @@
+#appCapsule {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente si es necesario */
+  padding: 10px; /* Agrega un pequeño relleno alrededor de la tabla */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+}
+
+table {
+  width: 100%;
+  max-width: 600px; /* Limita el ancho máximo de la tabla para dispositivos grandes */
+  margin-top: 20px;
+  border-collapse: collapse; /* Asegura que las celdas se vean bien juntas */
+}
+
+th, td {
+  padding: 8px;
+  text-align: center; /* Centra el texto en las celdas */
+}
+
+.yellow-background {
+  background-color: #f9c74f; /* Un amarillo más suave */
+  color: white;
+}
+
+.green-background {
+  background-color: #90be6d; /* Verde suave */
+  color: white;
+}
+
+.red-background {
+  background-color: #f94144; /* Rojo suave */
+  color: white;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%; 
+  text-align: center; 
+}
+
+.mat-icon-button {
+  color: #007bff;
+}
+
+@media (max-width: 600px) {
+  table {
+    font-size: 12px;
+  }
+  
+  .btn {
+    font-size: 12px;
+  }
+}

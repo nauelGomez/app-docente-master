@@ -1,0 +1,9 @@
+.table td:first-child {
+  white-space: nowrap;
+}
+
+.section{
+  text-align:left
+}
+
+

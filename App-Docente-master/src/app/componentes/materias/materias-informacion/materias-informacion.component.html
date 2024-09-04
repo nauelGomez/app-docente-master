@@ -1,0 +1,30 @@
+<div class="section mt-2">
+  <div class="card text-center">
+    <div class="card-header">
+      <h5 class="card-title">{{(Informacion$ | async)?.materia}}</h5>
+      <div class="card-subtitle">Curso: {{(Informacion$ | async)?.curso}} - Rol: ({{rol}})</div>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><ng-content select="[titulo-cuerpo]"></ng-content></h5>
+        <app-fecha-yhora></app-fecha-yhora>
+    </div>
+  </div>
+
+</div>
+
+<div class="section full mt-2" style="background-color: white; border-top-left-radius:20px; border-top-right-radius:20px">
+  <div class="profile-stats ps-2 pe-2 pb-2">
+    <a class="item">
+    </a>
+      <a  class="item">
+          <h5 class="subtext">{{(rol == "PR" || rol == "MI" || rol == "MG" && (Informacion$ | async)?.tipo_materia=='Z')?'Dias Habiles':'Cantidad de clases'}}</h5>
+          <strong>{{(Informacion$ | async)?.cantidad_clases}}</strong>
+      </a>
+      <a class="item">
+        <h5 class="subtext">Cantidad de Alumnos</h5>
+        <strong>{{(Informacion$ | async)?.cantidad_alumnos}}</strong>
+      </a>
+      <a class="item">
+      </a>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+
+.dialogbox .modal-dialog .modal-content {
+  max-width: 800px !important;
+  margin: auto;
+  max-height: 560px;
+  overflow: auto;
+  border: 0;
+  border-radius: 16px;
+}

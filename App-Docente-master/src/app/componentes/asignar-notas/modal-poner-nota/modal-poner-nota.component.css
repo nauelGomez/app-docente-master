@@ -1,0 +1,92 @@
+
+.modal-content {
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+
+.modal-header, .modal-body, .modal-footer {
+  padding: 0; 
+  border: none; 
+}
+
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px; 
+}
+
+.modal-button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-cuatrimestre.active,
+.btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-section {
+  margin-bottom: 20px;
+}
+
+.observacion {
+  display: block;
+  width: 100%;
+  min-height: 60px;
+  resize: none; 
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 15px;
+  }
+
+  .modal-button-group {
+    flex-direction: column;
+  }
+
+  .btn-cuatrimestre, .btn {
+    margin-bottom: 10px;
+  }
+}
