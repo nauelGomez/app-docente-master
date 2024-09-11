@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa; /* Fondo suave para el header */
+  background-color: #f8f9fa; 
   padding: 15px;
   border-bottom: 1px solid #dee2e6;
 }
@@ -19,12 +19,12 @@
 
 .btn-group {
   display: flex;
-  justify-content: center; /* Centrar los botones */
+  justify-content: center; 
   margin-bottom: 20px;
 }
 
 .btn-group .btn {
-  margin: 0 10px; /* Espaciado entre los botones */
+  margin: 0 10px; 
 }
 
 textarea {
