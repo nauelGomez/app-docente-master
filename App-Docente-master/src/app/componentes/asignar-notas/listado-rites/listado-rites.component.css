@@ -20,8 +20,7 @@
 
 .comment-block {
   padding: 10px;
-  background-color: #f7f7f7;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .barra {
@@ -39,4 +38,12 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+}
+
+.list-group-item{
+  background-color: transparent;
+}
+
+li {
+  border: none;
 }
