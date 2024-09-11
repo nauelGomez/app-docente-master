@@ -1,92 +1,104 @@
-
-.modal-content {
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 100%;
-  width: 100%;
-  margin: 0 auto;
-  background-color: white; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-}
-
-
-.modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.5); 
-}
-
-
-.modal-header, .modal-body, .modal-footer {
-  padding: 0; 
-  border: none; 
-}
-
-
-.modal-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 10px; 
-}
-
-.modal-button-group {
+.modal-header {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  margin-top: 10px;
+  align-items: center;
+  background-color: #f8f9fa; /* Fondo suave para el header */
+  padding: 15px;
+  border-bottom: 1px solid #dee2e6;
 }
 
-.btn-cuatrimestre.active,
-.btn.active {
-  background-color: #007bff;
-  color: white;
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.modal-label {
-  font-weight: 500;
-  margin-bottom: 5px;
-  display: block;
-  text-align: center;
+.modal-body {
+  padding: 20px;
+  background-color: #ffffff;
 }
 
-.full-width {
+.btn-group {
+  display: flex;
+  justify-content: center; /* Centrar los botones */
+  margin-bottom: 20px;
+}
+
+.btn-group .btn {
+  margin: 0 10px; /* Espaciado entre los botones */
+}
+
+textarea {
   width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  resize: none;
 }
 
 .modal-footer {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid #dee2e6;
 }
 
-.modal-section {
-  margin-bottom: 20px;
-}
-
-.observacion {
-  display: block;
-  width: 100%;
-  min-height: 60px;
-  resize: none; 
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 5px;
+.modal-footer .btn {
+  width: 80px; 
 }
 
 .btn {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (max-width: 600px) {
-  .modal-content {
-    padding: 15px;
-  }
+.btn-primary {
+  background-color: #5618bb;
+  border-color: #5618bb;
+  color: white;
+  border-radius: 25px;
 
-  .modal-button-group {
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+  border-radius: 25px;
+}
+
+.btn-close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: #6c757d;
+}
+
+textarea:focus, input:focus {
+  border-color: #5618bb;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,123,255,.25);
+}
+
+@media (max-width: 768px) {
+  .modal-body, .modal-footer {
     flex-direction: column;
   }
 
-  .btn-cuatrimestre, .btn {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
     margin-bottom: 10px;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
   }
 }
+

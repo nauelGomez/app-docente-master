@@ -14,7 +14,7 @@ export class ListadoAlumnosComponent {
   constructor(private modalService: NgbModal) {}
 
   openModal(alumno: string) {
-    const modalRef = this.modalService.open(ModalPonerNotaComponent, {backdrop: 'static', size: 'xl'});
+    const modalRef = this.modalService.open(ModalPonerNotaComponent, { backdrop: 'static', size: 'xl' });
     modalRef.componentInstance.alumno = alumno;
     modalRef.componentInstance.primerCuatrimestreAsignado = this.isPrimerCuatrimestreAsignado(alumno);
 
@@ -47,15 +47,4 @@ const ALUMNOS_DATA: Alumno[] = [
   { alumno: 'Calamaschi, Ariel', calFinal: '', primerCuatrimestre: 'TEA', segundoCuatrimestre: 'TEP' },
   { alumno: 'Dagostino, Armando', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
   { alumno: 'Esquivel, Mariano', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Fernandez, Fabian', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Ciriano, Mariela', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Aiello, Gisela', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Guevara, Maria', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Aereos, Juan Martin', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Bertolo, Ariel', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Pradas, Pablo', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Lopez Diaz, Juan Armando', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Gonzalez Olivero, Ezequiel', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Mendoza, Lola', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
-  { alumno: 'Pontirolli, Alejandro', calFinal: '', primerCuatrimestre: '', segundoCuatrimestre: '' },
 ];

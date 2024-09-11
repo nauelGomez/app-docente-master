@@ -1,57 +1,40 @@
-<div class="modal-content">
+<form [formGroup]="formulario" (ngSubmit)="guardarNota()">
   <div class="modal-header">
-    <h4 class="modal-title">Asignar Nota - {{alumno}}</h4>
-    <button type="button" class="close close-button" aria-label="Close" (click)="cerrarModal()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <h5 class="modal-title">Asignar Nota</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
   </div>
 
   <div class="modal-body">
-    <section class="modal-section">
-      <label class="modal-label">Cuatrimestre</label>
-      <div class="modal-button-group">
-        <button class="btn btn-light btn-cuatrimestre" 
-                [ngClass]="{ 'active': cuatrimestre === 'primerCuatrimestre' }"
-                (click)="cuatrimestre='primerCuatrimestre'">
-          1er Cuatrimestre
-        </button>
-        <button class="btn btn-light btn-cuatrimestre" 
-                [ngClass]="{ 'active': cuatrimestre === 'segundoCuatrimestre' }"
-                (click)="cuatrimestre='segundoCuatrimestre'" 
-                [disabled]="!primerCuatrimestreAsignado">
-          2do Cuatrimestre
-        </button>
+   
+    <div class="btn-group mb-3">
+      <button type="button" class="btn" [ngClass]="{'btn-primary': cuatrimestre === 'primerCuatrimestre'}" (click)="seleccionarCuatrimestre('primerCuatrimestre')">
+        1er Cuatrimestre
+      </button>
+      <button type="button" class="btn" [ngClass]="{'btn-primary': cuatrimestre === 'segundoCuatrimestre'}" (click)="seleccionarCuatrimestre('segundoCuatrimestre')">
+        2do Cuatrimestre
+      </button>
+    </div>
+
+   
+    <div class="form-group">
+      <label for="tipoNota">Tipo de Nota</label>
+      <div class="btn-group">
+        <button type="button" class="btn" [ngClass]="{'btn-success': tipoNota === 'TEA'}" (click)="seleccionarTipo('TEA')">TEA</button>
+        <button type="button" class="btn" [ngClass]="{'btn-warning': tipoNota === 'TEP'}" (click)="seleccionarTipo('TEP')">TEP</button>
+        <button type="button" class="btn" [ngClass]="{'btn-danger': tipoNota === 'TED'}" (click)="seleccionarTipo('TED')">TED</button>
       </div>
-    </section>
+    </div>
 
     
-    <section class="modal-section">
-      <label class="modal-label">Tipo de Nota</label>
-      <div class="modal-button-group">
-        <button class="btn btn-light" 
-                [ngClass]="{ 'active': tipo === 'TEA' }"
-                (click)="tipo='TEA'">TEA</button>
-        <button class="btn btn-light" 
-                [ngClass]="{ 'active': tipo === 'TEP' }"
-                (click)="tipo='TEP'">TEP</button>
-        <button class="btn btn-light" 
-                [ngClass]="{ 'active': tipo === 'TED' }"
-                (click)="tipo='TED'">TED</button>
-      </div>
-    </section>
-
-    
-    <section class="modal-section">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Observación</mat-label>
-        <textarea matInput [(ngModel)]="observacion" maxlength="200" class="observacion"></textarea>
-        <mat-hint align="end">{{observacion.length}} / 200</mat-hint>
-      </mat-form-field>
-    </section>
+    <div class="form-group">
+      <label for="observacion">Observaciones</label>
+      <textarea class="form-control" id="observacion" formControlName="observacion" rows="3"></textarea>
+      <app-error-formularios [control]="formControls('observacion')" fieldName="Observaciones"></app-error-formularios>
+    </div>
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-primary btn-block" (click)="guardar()">Guardar</button>
-    <button class="btn btn-secondary btn-block" (click)="cerrarModal()">Cancelar</button>
+    <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Guardar</button>
   </div>
-</div>
+</form>

@@ -1,35 +1,35 @@
 #appCapsule {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente si es necesario */
-  padding: 10px; /* Agrega un pequeño relleno alrededor de la tabla */
-  box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+  justify-content: center; 
+  align-items: center; 
+  padding: 10px; 
+  box-sizing: border-box; 
 }
 
 table {
   width: 100%;
-  max-width: 600px; /* Limita el ancho máximo de la tabla para dispositivos grandes */
+  max-width: 600px; 
   margin-top: 20px;
-  border-collapse: collapse; /* Asegura que las celdas se vean bien juntas */
+  border-collapse: collapse; 
 }
 
 th, td {
   padding: 8px;
-  text-align: center; /* Centra el texto en las celdas */
+  text-align: center; 
 }
 
 .yellow-background {
-  background-color: #f9c74f; /* Un amarillo más suave */
+  background-color: #f9c74f; 
   color: white;
 }
 
 .green-background {
-  background-color: #90be6d; /* Verde suave */
+  background-color: #90be6d; 
   color: white;
 }
 
 .red-background {
-  background-color: #f94144; /* Rojo suave */
+  background-color: #f94144; 
   color: white;
 }
 

@@ -10,14 +10,19 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AsignarNotasComponent {
   mensaje="Calificaciones"
+  modalService: any;
   constructor(private modal:NgbModal,
     private Route:Router
   ){}
 
   openModal(){
-    const modal = this.modal.open(ModalPonerNotaComponent,{backdrop:'static', size:'xl'})
-    modal.result.then(variable =>{
-      this.mensaje = variable
-    })
+    const modalRef = this.modalService.open(ModalPonerNotaComponent);
+    modalRef.result.then((result: any) => {
+      if (result) {
+        console.log('Nota asignada:', result);     
+      }
+    }).catch((error: any) => {
+      console.error('Modal cerrado sin guardar:', error);
+    });
   }
 }

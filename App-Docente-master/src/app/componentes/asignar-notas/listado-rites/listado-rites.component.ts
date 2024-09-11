@@ -14,6 +14,9 @@ export class ListadoRitesComponent {
   verAlumnos() {
     this.router.navigate(['./listado-alumnos'], { relativeTo: this.route });
   }
+  getBarWidth(progreso: string): string {
+    return progreso.replace('%', '') + '%';
+  }
 }
 
 export interface Rite {
