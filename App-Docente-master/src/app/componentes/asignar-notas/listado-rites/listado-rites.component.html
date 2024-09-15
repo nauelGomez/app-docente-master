@@ -4,13 +4,13 @@
       <div *ngFor="let rite of dataSource; let i = index" class="accordion-item">
         <div class="comment-block">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              [attr.data-bs-target]="'#accordion' + i">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#accordion' + i">
               <div class="item">
                 <div class="in">
                   <div class="comment-header">
                     <span class="time">{{ rite.fecha | date: 'dd-MM-yyyy' }}</span>
-                    <h4 class="title mx-2">{{ rite.denominacion }}</h4>
+                    <p class="title mx-2">{{ rite.denominacion }}</p>
+                    <span class="badge badge-custom ms-auto">{{ rite.estado }}</span>
                   </div>
                 </div>
               </div>

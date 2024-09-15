@@ -1,0 +1,65 @@
+.comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .comment-header .time {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-right: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .comment-header h4.title {
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+  }
+  
+  .comment-header .badge-custom {
+    background-color: #6f42c1;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+  }
+  
+  /* Estilo para el título al abrir el acordeón */
+  .accordion-opened-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 576px) {
+    .accordion-button {
+      font-size: 0.85rem;
+      padding: 8px;
+    }
+  
+    .comment-header h4.title {
+      font-size: 0.85rem;
+    }
+  
+    .btn-outline-secondary {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+    }
+  
+    .badge-custom {
+      font-size: 0.7rem;
+      padding: 2px 4px;
+    }
+  }
+  
