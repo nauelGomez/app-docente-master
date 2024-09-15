@@ -9,7 +9,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { DatePipe } from '@angular/common';
 
-
 import { RequestInterceptorInterceptor } from './Interceptor/request-interceptor.interceptor';
 import { CompartidoModule } from './compartido/compartido.module';
 import { VersionModalComponent } from './servicios/version/version-modal/version-modal.component';
@@ -22,6 +21,7 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     VersionModule,

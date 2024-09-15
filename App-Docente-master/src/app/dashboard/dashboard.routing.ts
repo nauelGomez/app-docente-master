@@ -63,7 +63,8 @@ const ComunicadosRoutes: Routes = [
         path: 'incidencias',
         loadChildren: () => import('../componentes/incidencia/incidencia.module').then(m => m.IncidenciaModule)
       },
-      { path: 'asignar-notas', loadChildren: () => import('../componentes/asignar-notas/asignar-notas.module').then(m => m.AsignarNotasModule) }
+      { path: 'asignar-notas', loadChildren: () => import('../componentes/asignar-notas/asignar-notas.module').then(m => m.AsignarNotasModule) },
+      { path: 'difusiones-pedagogicas', loadChildren: () => import('../componentes/difusiones-pedagogicas/difusiones-pedagogicas.module').then(m => m.DifusionesPedagogicasModule) }
     ]
   }
 ];
