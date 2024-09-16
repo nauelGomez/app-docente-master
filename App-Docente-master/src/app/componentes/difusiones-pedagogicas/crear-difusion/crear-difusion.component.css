@@ -1,0 +1,43 @@
+
+.form-control {
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#editor {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 300px;
+}
+
+
+.quill-editor {
+    min-height: 150px;
+}
+
+
+.btn {
+    padding: 10px 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+
+.custom-file-upload {
+    cursor: pointer;
+    display: inline-block;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+input[type="file"] {
+    display: none;
+}

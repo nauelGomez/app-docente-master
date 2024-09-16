@@ -7,6 +7,7 @@ import { VisualizarDifusionComponent } from './visualizar-difusion/visualizar-di
 import { CrearDifusionComponent } from './crear-difusion/crear-difusion.component';
 import { ListaDifusionesComponent } from './lista-difusiones/lista-difusiones.component';
 
+
 @NgModule({
     declarations: [
        DifusionesPedagogicasComponent,
@@ -18,7 +19,6 @@ import { ListaDifusionesComponent } from './lista-difusiones/lista-difusiones.co
         CommonModule,
         CompartidoModule,
         DifusionesPedagogicasRoutingModule,
-        
     ]
   })
   export class DifusionesPedagogicasModule { }
