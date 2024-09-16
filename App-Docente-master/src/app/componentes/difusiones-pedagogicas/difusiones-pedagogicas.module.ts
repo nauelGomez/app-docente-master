@@ -5,12 +5,14 @@ import { DifusionesPedagogicasComponent } from './difusiones-pedagogicas.compone
 import { DifusionesPedagogicasRoutingModule } from './difusiones-pedagogicas-routing';
 import { VisualizarDifusionComponent } from './visualizar-difusion/visualizar-difusion.component';
 import { CrearDifusionComponent } from './crear-difusion/crear-difusion.component';
+import { ListaDifusionesComponent } from './lista-difusiones/lista-difusiones.component';
 
 @NgModule({
     declarations: [
        DifusionesPedagogicasComponent,
        VisualizarDifusionComponent,
-       CrearDifusionComponent
+       CrearDifusionComponent,
+       ListaDifusionesComponent
       ],
       imports: [
         CommonModule,

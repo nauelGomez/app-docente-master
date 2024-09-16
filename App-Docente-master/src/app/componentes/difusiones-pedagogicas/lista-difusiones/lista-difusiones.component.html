@@ -1,0 +1,60 @@
+
+    <div class="section mt-1 mb-1">
+      <div class="input-group d-flex">
+        <input type="text" class="form-control rounded" placeholder="Buscar difusiones...">
+        <button class="btn btn-primary rounded ms-2 d-none d-md-block text-center" (click)="nuevaDifusion()" type="button" style="padding: 10px 20px;">Nueva difusión</button>
+      </div>
+      <div class="d-md-none mt-2">
+        <button class="btn btn-primary rounded w-100" (click)="nuevaDifusion()" type="button">Nueva difusión</button>
+      </div>
+    </div>
+      
+  
+    <div class="section inset mt-2">
+      <div class="accordion" id="accordionExample">
+        <div *ngFor="let difusion of dataSource; let i = index" class="accordion-item">
+          <div class="comment-block">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#accordion' + i">
+                <div class="item">
+                  <div class="in">
+                    <div class="comment-header">
+                      <span class="time">{{ difusion.fecha | date: 'dd-MM-yyyy' }}</span>
+                     
+                      <h4 class="title mx-2" *ngIf="!isSmallScreen">{{ difusion.titulo }}</h4>
+                 
+                      <h4 class="title mx-2" *ngIf="isSmallScreen">{{ difusion.titulo | slice:0:20 }}...</h4>
+  
+                      <span class="badge badge-custom ms-auto">{{ difusion.estado }}</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div [id]="'accordion' + i" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body" style="text-align: left;">
+                <div class="item">
+                  <div class="in">
+                   
+                    <h6 class="accordion-opened-title">{{ difusion.titulo }}</h6>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Vigencia:</strong> Desde el {{ difusion.vigenciaInicio | date: 'dd-MM-yyyy' }} hasta el {{ difusion.vigenciaFin | date: 'dd-MM-yyyy' }}</li>
+                      <li class="list-group-item"><strong>Estado:</strong> {{ difusion.estado }}</li>
+                    </ul>
+                    <div class="comment-footer">
+                      <button type="button" class="btn btn-outline-secondary btn-sm rounded me-1" (click)="verDetalle(difusion)">
+                        <ion-icon name="ellipsis-horizontal-outline"></ion-icon> Ver Detalle
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <router-outlet></router-outlet>
+  

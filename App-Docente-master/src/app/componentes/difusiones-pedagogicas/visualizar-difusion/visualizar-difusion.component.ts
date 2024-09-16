@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-visualizar-difusion',
   templateUrl: './visualizar-difusion.component.html',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class VisualizarDifusionComponent {
 
+  
 }
