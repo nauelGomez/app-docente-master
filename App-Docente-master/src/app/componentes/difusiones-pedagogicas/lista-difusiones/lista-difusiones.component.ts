@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 interface DifusionPedagogica {
@@ -8,6 +8,10 @@ interface DifusionPedagogica {
   vigenciaInicio: Date;
   vigenciaFin: Date;
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 
 @Component({
@@ -48,13 +52,10 @@ export class ListaDifusionesComponent {
 
   checkScreenSize() {
     const width = window.innerWidth;
-
     this.isSmallScreen = width < 768;
   }
 
-  verDetalle(difusion: DifusionPedagogica) {
-    console.log('Detalles de la difusión:', difusion);
-    
+  verDetalle(difusion: DifusionPedagogica) {   
     this.router.navigate(['visualizar-difusion'], {
       relativeTo: this.route,
       queryParams: { titulo: difusion.titulo }
