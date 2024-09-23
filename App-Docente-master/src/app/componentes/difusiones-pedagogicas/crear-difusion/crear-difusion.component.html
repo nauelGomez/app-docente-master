@@ -2,23 +2,16 @@
     
   <div class="section mt-1 mb-1">
     <label for="destinatarios">Destinatarios:</label>
-    <div class="custom-combobox">
-      <ul class="combobox-list">
-        <!-- Iteramos sobre los cursos y sus alumnos -->
-        <ng-container *ngFor="let curso of cursos">
-          <!-- Curso como etiqueta (no seleccionable) -->
-          <li class="combobox-item curso">{{ curso.nombre }}</li>
-          
-          <!-- Alumnos del curso -->
-          <li *ngFor="let alumno of alumnos[curso.id]"
-              (click)="toggleAlumnoSeleccionado(alumno.id)"
-              [class.selected]="alumnosSeleccionados.includes(alumno.id)"
-              class="combobox-item alumno">
-            {{ alumno.nombre }}
-          </li>
-        </ng-container>
-      </ul>
-    </div>
+    <select class="form-control" id="destinatarios" [(ngModel)]="destinatariosSeleccionados" multiple (change)="onChangeSelection($event)">
+      <!-- Mostrar los cursos como opciones -->
+      <ng-container *ngFor="let curso of cursos">
+        <option [disabled]="true">{{ curso.nombre }}</option>
+        <!-- Mostrar los alumnos del curso -->
+        <option *ngFor="let alumno of alumnos[curso.id]" [value]="alumno.id" [style.padding-left.px]="20">
+          {{ alumno.nombre }}
+        </option>
+      </ng-container>
+    </select>
   </div>
   
   
