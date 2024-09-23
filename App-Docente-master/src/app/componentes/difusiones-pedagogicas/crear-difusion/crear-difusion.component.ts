@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { DifusionesService } from '../difusiones.service';
 import Quill from 'quill';
 
 @Component({
@@ -16,11 +17,25 @@ export class CrearDifusionComponent {
 
   @ViewChild('editor', { static: false }) editorElement!: ElementRef;
   quillInstance!: Quill;
-
   cursos = [
-    { id: 1, nombre: 'Curso 1' },
-    { id: 2, nombre: 'Curso 2' }
-    // Cargar dinámicamente los cursos correspondientes al profesor logueado
+    {
+      nombre: 'Curso 1',
+      seleccionado: false,
+      mostrarAlumnos: false,
+      alumnos: [
+        { nombre: 'Alumno 1-1', seleccionado: false },
+        { nombre: 'Alumno 1-2', seleccionado: false },
+      ]
+    },
+    {
+      nombre: 'Curso 2',
+      seleccionado: false,
+      mostrarAlumnos: false,
+      alumnos: [
+        { nombre: 'Alumno 2-1', seleccionado: false },
+        { nombre: 'Alumno 2-2', seleccionado: false },
+      ]
+    }
   ];
 
   editorConfig = {
@@ -32,19 +47,31 @@ export class CrearDifusionComponent {
     ]
   };
 
-  constructor(private router: Router) {}
-
-  isFormValid(): boolean {
-    return this.titulo?.trim().length > 0 &&
-           this.fechaInicio !== null &&
-           this.fechaFin !== null &&
-           this.contenido?.trim().length > 0;
+  constructor(private router: Router, private difusionesService: DifusionesService) {}
+  isFormValid() {
+    return this.titulo && this.fechaInicio && this.fechaFin && this.contenido;
+  }
+  toggleCurso(curso: any) {
+    curso.mostrarAlumnos = !curso.mostrarAlumnos;
+    curso.seleccionado = !curso.seleccionado;
   }
 
+  toggleAlumno(alumno: any, curso: any) {
+    alumno.seleccionado = !alumno.seleccionado;
+    curso.seleccionado = false;
+  }
   enviarDifusion() {
     if (this.isFormValid()) {
-      console.log('Difusión enviada:', { titulo: this.titulo, fechaInicio: this.fechaInicio, fechaFin: this.fechaFin, contenido: this.contenido, archivos: this.archivos });
-      //falta implementar
+      const nuevaDifusion = {
+        fecha: new Date(),
+        titulo: this.titulo,
+        estado: 'Publicada',
+        vigenciaInicio: this.fechaInicio,
+        vigenciaFin: this.fechaFin
+      };
+
+      this.difusionesService.agregarDifusion(nuevaDifusion);
+      this.router.navigate(['/lista-difusiones']);
     }
   }
 

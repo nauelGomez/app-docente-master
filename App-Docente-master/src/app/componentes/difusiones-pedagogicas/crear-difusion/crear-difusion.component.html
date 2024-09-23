@@ -1,42 +1,48 @@
+<div class="form-group">
+  <label for="curso" class="label-centrado">Seleccione Curso y Alumnos:</label>
+  <div class="curso-lista">
+    <div *ngFor="let curso of cursos" class="curso">
+      <div class="curso-titulo" (click)="toggleCurso(curso)" [class.seleccionado]="curso.seleccionado">
+        {{ curso.nombre }}
+      </div>
+      <div *ngIf="curso.mostrarAlumnos" class="alumnos-lista">
+        <div *ngFor="let alumno of curso.alumnos" 
+             class="alumno" 
+             (click)="toggleAlumno(alumno, curso)" 
+             [class.seleccionado]="alumno.seleccionado">
+          {{ alumno.nombre }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="section mt-1 mb-1">
-    <!-- ComboBox para seleccionar el curso y los alumnos -->
-    <label for="destinatarios">Destinatarios:</label>
-    <select class="form-control" id="destinatarios">
-      <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
-    </select>
-  </div>
-  
-  <div class="section mt-1 mb-1">
-    <!-- Campo para el título del comunicado -->
-    <label for="titulo">Título:</label>
-    <input type="text" id="titulo" [(ngModel)]="titulo" class="form-control" placeholder="Título">
-  </div>
-  
-  <div class="section mt-1 mb-1">
-    <!-- Fecha de Inicio -->
-    <label for="inicio">Inicio:</label>
-    <input type="date" id="inicio" [(ngModel)]="fechaInicio" class="form-control">
-    
-    <!-- Fecha de Finalización -->
-    <label for="fin" class="ms-2">Finalización:</label>
-    <input type="date" id="fin" [(ngModel)]="fechaFin" class="form-control">
-  </div>
-  
-  <div class="section mt-1 mb-1">
-    <label for="editor">Comunicado:</label>
-    <div #editor style="height: 300px;"></div> <!-- Contenedor del editor Quill -->
-  </div>
-  
-  <div class="section mt-1 mb-1">
-    <!-- Botón para subir archivos -->
-    <label for="file-upload" class="custom-file-upload">
-      <i class="fa fa-cloud-upload"></i> Subir Archivo(s)
-    </label>
-    <input type="file" id="file-upload" (change)="onFileSelected($event)" />
-  </div>
-  
-  <div class="section mt-1 mb-1 d-flex justify-content-between">
-    <button class="btn btn-primary rounded" (click)="enviarDifusion()">Enviar</button>
-    <button class="btn btn-danger rounded" (click)="cancelar()">Cancelar</button>
-  </div>
-  
+  <label for="titulo">Título:</label>
+  <input type="text" id="titulo" [(ngModel)]="titulo" class="form-control" placeholder="Título">
+</div>
+
+<div class="section mt-1 mb-1">
+  <label for="inicio">Inicio:</label>
+  <input type="date" id="inicio" [(ngModel)]="fechaInicio" class="form-control">
+
+  <label for="fin" class="ms-2">Finalización:</label>
+  <input type="date" id="fin" [(ngModel)]="fechaFin" class="form-control">
+</div>
+
+<div class="section mt-1 mb-1">
+  <label for="editor">Comunicado:</label>
+  <div #editor style="height: 300px; background-color: aliceblue;"></div>
+</div>
+
+<div class="form-group">
+  <label for="file-upload" class="custom-file-upload">
+    <i class="fas fa-cloud-upload-alt"></i> Subir Archivo
+  </label>
+  <input id="file-upload" type="file" (change)="onFileSelected($event)" />
+</div>
+
+<div class="section mt-1 mb-1 d-flex justify-content-between">
+  <button class="btn btn-primary rounded" (click)="enviarDifusion()">Enviar</button>
+  <button class="btn btn-danger rounded" (click)="cancelar()">Cancelar</button>
+</div>

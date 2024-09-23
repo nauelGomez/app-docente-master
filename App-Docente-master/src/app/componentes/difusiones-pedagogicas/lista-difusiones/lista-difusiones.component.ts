@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DifusionesService } from '../difusiones.service';
 
 interface DifusionPedagogica {
   fecha: Date;
@@ -16,7 +17,7 @@ interface DifusionPedagogica {
   styleUrls: ['./lista-difusiones.component.css']
 })
 export class ListaDifusionesComponent {
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private difusionesService: DifusionesService) { }
 
   dataSource: DifusionPedagogica[] = [
     {
@@ -44,11 +45,13 @@ export class ListaDifusionesComponent {
 
   ngOnInit() {
     this.checkScreenSize();
+    this.difusionesService.difusiones$.subscribe(difusiones => {
+      this.dataSource = [...this.dataSource, ...difusiones];
+    });
   }
 
   checkScreenSize() {
     const width = window.innerWidth;
-
     this.isSmallScreen = width < 768;
   }
 
