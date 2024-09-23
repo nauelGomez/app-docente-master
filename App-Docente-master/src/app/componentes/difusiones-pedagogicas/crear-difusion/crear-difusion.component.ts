@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import Quill from 'quill';
+import Swal from 'sweetalert2';
+import { DifusionService } from '../difusion.service';
 
 @Component({
   selector: 'app-crear-difusion',
@@ -13,7 +15,9 @@ export class CrearDifusionComponent {
   fechaFin: Date | null = null;
   contenido: string = '';
   archivos: File[] = [];
-  destinatariosSeleccionados: number[] = [];
+
+  alumnosSeleccionados: number[] = []; // Almacenar alumnos seleccionados
+  destinatariosSeleccionados: number[] = []; // Almacenar destinatarios
 
   @ViewChild('editor', { static: false }) editorElement!: ElementRef;
   quillInstance!: Quill;
@@ -42,57 +46,80 @@ export class CrearDifusionComponent {
       ['link', 'image']
     ]
   };
-  alumnosCursoSeleccionado: { id: number, nombre: string, cursoId: number }[] = [];
-  constructor(private router: Router) { }
 
+  constructor(private router: Router, private difusionService: DifusionService) { }
+
+  // Alternar la selección de un alumno
+  toggleAlumnoSeleccionado(alumnoId: number) {
+    const index = this.alumnosSeleccionados.indexOf(alumnoId);
+    if (index === -1) {
+      this.alumnosSeleccionados.push(alumnoId); // Selecciona si no está
+    } else {
+      this.alumnosSeleccionados.splice(index, 1); // Deselecciona si ya está
+    }
+  }
+
+  // Función para manejar la selección
   onChangeSelection(event: any) {
-    const selectedOptions = Array.from(event.target.selectedOptions); // Obtener todas las opciones seleccionadas
+    const selectedOptions = Array.from(event.target.selectedOptions);
     this.destinatariosSeleccionados = []; // Resetear la lista de seleccionados
 
     selectedOptions.forEach((option: any) => {
       const selectedValue = option.value;
-      const curso = this.cursos.find(curso => curso.nombre === option.label); // Revisar si es un curso
+      const curso = this.cursos.find(curso => curso.nombre === option.label);
 
       if (curso) {
-        // Si seleccionó un curso, agregar todos los alumnos del curso
+        // Si selecciona un curso, selecciona todos los alumnos de ese curso
         const alumnosDelCurso = this.alumnos[curso.id].map(alumno => alumno.id);
         this.destinatariosSeleccionados = this.destinatariosSeleccionados.concat(alumnosDelCurso);
       } else {
-        // Si seleccionó un alumno, agregar solo ese alumno
+        // Si selecciona un alumno, lo añade
         this.destinatariosSeleccionados.push(Number(selectedValue));
       }
     });
+    // Remover duplicados
     this.destinatariosSeleccionados = [...new Set(this.destinatariosSeleccionados)];
   }
+
   isFormValid(): boolean {
     return this.titulo?.trim().length > 0 &&
-           this.fechaInicio !== null &&
-           this.fechaFin !== null &&
-           this.contenido?.trim().length > 0;
+      this.fechaInicio !== null &&
+      this.fechaFin !== null &&
+      this.contenido?.trim().length > 0;
   }
 
   enviarDifusion() {
     if (this.isFormValid()) {
-      console.log('Difusión enviada:', {
+      const nuevaDifusion = {
         titulo: this.titulo,
         fechaInicio: this.fechaInicio,
         fechaFin: this.fechaFin,
         contenido: this.contenido,
         archivos: this.archivos,
         destinatarios: this.destinatariosSeleccionados
+      };
+
+      console.log('Difusión enviada:', nuevaDifusion);
+
+
+      this.difusionService.agregarDifusion(nuevaDifusion);
+
+
+      Swal.fire({
+        icon: 'success',
+        title: '¡Difusión enviada!',
+        text: 'Tu difusión ha sido enviada correctamente.'
       });
-      // Implementar lógica para enviar la difusión
     }
   }
-
   cancelar() {
     this.router.navigate(['/']);
   }
 
-
   onFileSelected(event: any) {
     this.archivos = event.target.files;
   }
+
   ngAfterViewInit() {
     this.quillInstance = new Quill(this.editorElement.nativeElement, {
       theme: 'snow',
@@ -106,22 +133,15 @@ export class CrearDifusionComponent {
       }
     });
   }
+
   mostrarAlumnos() {
-    this.alumnosCursoSeleccionado = [];
-
+    this.alumnosSeleccionados = [];
     this.cursos.forEach(curso => {
-      // Primero agregamos el curso al array
-      this.alumnosCursoSeleccionado.push({ id: curso.id, nombre: curso.nombre, cursoId: curso.id });
+      // Añadir el curso (no seleccionable, pero no hace falta concatenarlo)
+      const alumnosDelCurso = this.alumnos[curso.id].map(alumno => alumno.id); // Solo extraemos los IDs
 
-      // Luego agregamos los alumnos de ese curso, asegurándonos de incluir el cursoId
-      const alumnosDelCurso = this.alumnos[curso.id].map(alumno => ({
-        ...alumno,
-        cursoId: curso.id // Añadimos cursoId a cada alumno
-      }));
-
-      // Concatenamos los alumnos con el array
-      this.alumnosCursoSeleccionado = this.alumnosCursoSeleccionado.concat(alumnosDelCurso);
+      // Concatenar los IDs de los alumnos (números, no objetos)
+      this.alumnosSeleccionados = this.alumnosSeleccionados.concat(alumnosDelCurso);
     });
   }
 }
-
