@@ -1,6 +1,6 @@
 .accordion-item {
   border: none;
-  margin-bottom: 0px;
+  margin-bottom: 8px; 
 }
 
 .accordion-header {
@@ -11,81 +11,43 @@
   background-color: #fff;
   border: none;
   box-shadow: none;
-  padding: 12px 18px; 
+  padding: 12px 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-  min-width: 0; 
+  justify-content: space-between;
+  min-width: 0;
 }
-
 
 .accordion-button::after {
-  margin-left: 15px; 
-  min-width: 24px; 
+  margin-left: 15px;
+  min-width: 24px;
 }
 
-
-.accordion-button .in {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-width: 0; 
-}
-
-.accordion-body {
-  padding: 8px 12px;
-}
-
-li {
-  border: none;
-  background-color: transparent;
-}
-
-.comment-block {
-  padding: 8px;
-  background-color: #f7f7f7;
-  border-radius: 15px;
-  margin-bottom: 8px;
-}
-
-.comment-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; 
-  flex-wrap: nowrap; 
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0; 
-}
-
-.comment-header .time {
-  font-size: 0.85rem;
-  color: #6c757d;
+/* Estilo para la sección de fecha y título, similar al código original */
+.fecha {
+  font-size: 10px;
+  font-weight: bold;
   margin-right: 10px;
-  white-space: nowrap;
 }
 
-.comment-header .title {
+.titulo {
   font-size: 1rem;
   font-weight: bold;
-  margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1; 
-  min-width: 0; 
+  flex: 1;
 }
 
-.comment-header .badge-custom {
-  background-color: #6f42c1;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.75rem;
+/* Estilo para el contenedor de botones y elementos dentro del acordeón */
+.btn-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   white-space: nowrap;
 }
 
+/* Estilo de la barra de progreso */
 .barra {
   height: 1rem;
   background-color: #0d6efd;
@@ -102,4 +64,25 @@ li {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+}
+
+.badge-custom {
+  background-color: #6f42c1;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 330px) {
+  .titulo {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

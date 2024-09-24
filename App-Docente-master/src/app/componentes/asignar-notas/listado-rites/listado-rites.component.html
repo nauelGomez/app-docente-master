@@ -2,44 +2,34 @@
   <div class="section inset mt-2">
     <div class="accordion" id="accordionExample">
       <div *ngFor="let rite of dataSource; let i = index" class="accordion-item">
-        <div class="comment-block">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#accordion' + i">
-              <div class="item">
-                <div class="in">
-                  <div class="comment-header">
-                    <span class="time">{{ rite.fecha | date: 'dd-MM-yyyy' }}</span>
-                    <p class="title mx-2">{{ rite.denominacion }}</p>
-                    <span class="badge badge-custom ms-auto">{{ rite.estado }}</span>
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#accordion' + i">
+            <div class="btn-container">
+              <span class="fecha">{{ rite.fecha | date: 'dd-MM-yyyy' }}</span>
+              <span class="titulo mx-2">{{ rite.denominacion }}</span>
+              <span class="badge badge-custom ms-auto">{{ rite.estado }}</span>
+            </div>
+          </button>
+        </h2>
+        <div [id]="'accordion' + i" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Curso:</strong> {{ rite.curso }}</li>
+              <li class="list-group-item"><strong>Materia:</strong> {{ rite.materia }}</li>
+              <li class="list-group-item"><strong>Estado:</strong> {{ rite.estado }}</li>
+              <li class="list-group-item">
+                <strong>Progreso:</strong>
+                <div class="rate-block mb-1 mt-05">
+                  <div class="barra" [style.width]="getBarWidth(rite.progreso)">
+                    <span class="leyenda">{{ rite.progreso }}</span>
                   </div>
                 </div>
-              </div>
-            </button>
-          </h2>
-          <div [id]="'accordion' + i" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body" style="text-align: left;">
-              <div class="item">
-                <div class="in">
-                  <ul class="list-group">
-                    <li class="list-group-item"><strong>Curso:</strong> {{ rite.curso }}</li>
-                    <li class="list-group-item"><strong>Materia:</strong> {{ rite.materia }}</li>
-                    <li class="list-group-item"><strong>Estado:</strong> {{ rite.estado }}</li>
-                    <li class="list-group-item">
-                      <strong>Progreso:</strong>
-                      <div class="rate-block mb-1 mt-05">
-                        <div class="barra" [style.width]="getBarWidth(rite.progreso)">
-                          <span class="leyenda">{{ rite.progreso }}</span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="comment-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm rounded me-1" (click)="verAlumnos()">
-                      <ion-icon name="people-outline"></ion-icon> Ver Alumnos
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </li>
+            </ul>
+            <div class="comment-footer">
+              <button type="button" class="btn btn-outline-secondary btn-sm rounded me-1" (click)="verAlumnos()">
+                <ion-icon name="people-outline"></ion-icon> Ver Alumnos
+              </button>
             </div>
           </div>
         </div>
